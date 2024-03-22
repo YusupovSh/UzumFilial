@@ -1,24 +1,44 @@
-import React from 'react'
+import React, { useRef, useState } from 'react';
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
 import 'swiper/css';
-import Img1 from '../../../public/images/banner/banner-1.png'
-function Banner() {
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import Img1 from '/images/banner/banner-1.png'
+import Img2 from '/images/banner/banner-2.png'
+import Img3 from '/images/banner/banner-3.png'
+
+// import required modules
+import { Keyboard, Pagination, Navigation } from 'swiper/modules';
+
+ function Banner() {
   return (
+    <>
+    <section className="banner">
+      <Swiper
+        slidesPerView={1}
+        keyboard={{
+          enabled: true,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Keyboard, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide><img src={Img3} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={Img1} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={Img2} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={Img3} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={Img1} alt="" /></SwiperSlide>
+        <SwiperSlide><img src={Img2} alt="" /></SwiperSlide>
+      </Swiper>
+    </section>
 
-
-    <Swiper
-      spaceBetween={50}
-      slidesPerView={3}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-    >
-      <SwiperSlide><img src={Img1} alt="" /></SwiperSlide>
-      <SwiperSlide>Slide 2</SwiperSlide>
-      <SwiperSlide>Slide 3</SwiperSlide>
-      <SwiperSlide>Slide 4</SwiperSlide>
-      ...
-    </Swiper>
-  )
+    </>
+  );
 }
-
 export default Banner
